@@ -1,0 +1,3 @@
+[submodule "assets"]
+	path = assets
+	url = https://github.com/tswow/tswow-test-assets.git
