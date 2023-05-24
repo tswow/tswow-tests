@@ -1,0 +1,13 @@
+.swc
+.vs
+*.blp
+global.d.ts
+tsconfig.json
+realms
+datasets
+datascripts/build
+livescripts/build
+addon/build
+assets/DBFilesClient
+*.zmp.png
+*.zmp
