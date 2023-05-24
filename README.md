@@ -1,10 +1,18 @@
 # TSWoW Tests
 
+## PUBLISHED FOR TESTING: NOT CURRENTLY SUITABLE FOR BEGINNERS
+
 This is the official demo/test module for [TSWoW](https://github.com/tswow/tswow)
 
 ## Installation
 
-To run this module, clone the repository into your `modules` directory, and then download and unzip the assets folder from the latest [Release](https://github.com/tswow/tswow/releases) tab.
+Run the following command inside the `modules` subdirectory in your TSWoW installation.
+
+```
+git clone https://github.com/tswow/tswow-tests.git --recurse-submodules
+```
+
+The module is then build like a normal module. To fix map stuff, you currently need to build data with the build-blp flag: `build data build-blp`.
 
 ## Usage
 
@@ -14,4 +22,4 @@ This module serves as a test and a demo for both basic and advanced TSWoW featur
 
 - You can browse the [datascripts](datascripts) directory as a general entrypoint to features as almost all are implemented around some kind of demo npc, relevant pointers are included to the [livescripts](livescripts), [lua](lua) and [addon](addon) directories.
 
-- Some basic server scripts are implemented as [InlineScripts](https://tswow.github.io/tswow-wiki/documentation/datascripts/#inlinescripts) directly in the datascripts to make them easier to read, while demos that require multiple events or functions are placed in the `livescripts` directory. Remember that you can functionally always turn an InlineScript into a LiveScript.
+- Some basic server scripts are implemented as [InlineScripts](https://tswow.github.io/tswow-wiki/documentation/datascripts/#inlinescripts) directly in the datascripts to make them easier to read, while demos that require multiple events or functions are placed in the `livescripts` directory.
