@@ -37,6 +37,4 @@ export function Main(events: TSEvents) {
     RegisterTalentEvents(events);
     RegisterSyntaxTestEvents(events);
     RegisterTaxiCheat(events);
-
-    events.Vehicle.OnAddPassenger
 }
