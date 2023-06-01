@@ -56,7 +56,7 @@ export class ORMArrayDemo extends DBArrayEntry {
         })
     }
 
-    static DeletePlayer(player: uint64) {
+    static DeletePlayer(player: TSGUID) {
         let arr = LoadDBArrayEntry(ORMArrayDemo,player)
         arr.forEach(x=>x.Delete())
         arr.Save()
@@ -74,7 +74,7 @@ export function RegisterArrayEvents(events: TSEvents) {
     });
 
     events.Player.OnDelete((guid)=>{
-        ORMArrayDemo.DeletePlayer(guid)
+        ORMArrayDemo.DeletePlayer(CreateGUID(guid,0))
     })
 }
 

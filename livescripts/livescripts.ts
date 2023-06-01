@@ -2,6 +2,7 @@
 import { RegisterAddonMessageEvents } from "./addon-messages/addon-messages-server";
 import { RegisterBattlegroundEvents } from "./battleground/battleground";
 import { RegisterCustomPacket } from "./custom-packets/custom-packet-server";
+import { RegisterFunctionalEvent } from "./functional/functional-event";
 import { RegisterFunctionalEvents } from "./functional/functional-menu";
 import { RegisterTaxiCheat } from "./misc/taxi-cheat";
 import { RegisterMutexEvents } from "./multithreading/mutex-test";
@@ -16,6 +17,8 @@ import { RegisterBasicTagEvents } from "./tags/tags-basic";
 import { RegisterUniqueTagEvents } from "./tags/tags-unique";
 import { RegisterTalentEvents } from "./talents/Talents";
 import { RegisterTeleporterEvents } from "./teleporter/teleporter";
+
+
 
 // This function is the main entrypoint for the livescript module.
 // Here, we invoke all other registry functions and pass on the 'TSEvents' object.
@@ -37,4 +40,5 @@ export function Main(events: TSEvents) {
     RegisterTalentEvents(events);
     RegisterSyntaxTestEvents(events);
     RegisterTaxiCheat(events);
+    RegisterFunctionalEvent(events);
 }
