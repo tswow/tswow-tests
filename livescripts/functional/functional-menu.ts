@@ -8,7 +8,7 @@ export enum FunctionalTest {
 
 export function RegisterFunctionalEvents(events: TSEvents) {
     events.Creature.OnGossipHello(
-        GetIDTag('tswow-tests','functional-npc'),
+        TAG('tswow-tests','functional-npc'),
         (creature,player,cancel) => {
             cancel.set(true)
             player.GossipClearMenu()
@@ -18,15 +18,15 @@ export function RegisterFunctionalEvents(events: TSEvents) {
         })
 
     events.Creature.OnGossipSelect(
-        GetIDTag('tswow-tests','functional-npc'),
+        TAG('tswow-tests','functional-npc'),
         (_creature,player,_menu,sel,cancel) => {
             cancel.set(true);
             switch(sel) {
                 case FunctionalTest.COLLECTION:
-                    CallFunctionalClass(player);
+                    SelectRandomFunction(player);
                     break;
                 case FunctionalTest.CLASS_MEMBER:
-                    SelectRandomFunction(player);
+                    CallFunctionalClass(player);
                     break;
             }
             player.GossipComplete();
