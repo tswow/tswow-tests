@@ -6,9 +6,7 @@ This is the official demo/test module for [TSWoW](https://github.com/tswow/tswow
 
 ## Installation
 
-Make sure you have these pull requests:
-- https://github.com/tswow/tswow/pull/793
-- https://github.com/tswow/tswow/pull/794
+Make sure you have the latest sources from the TSWoW master branch.
 
 Run the following command inside the `modules` subdirectory in your TSWoW installation.
 
