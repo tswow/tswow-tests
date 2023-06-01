@@ -37,7 +37,7 @@ let PreparedDelete = PrepareCharactersQuery(
 
 export function GetPreparedValue(player: TSPlayer): uint32 {
     const res = PreparedSelect.Create()
-        .SetUInt64(0, player.GetGUID())
+        .SetGUIDNumber(0, player.GetGUID())
         .Send()
     if(!res.GetRow()) {
         return 0;
@@ -48,7 +48,7 @@ export function GetPreparedValue(player: TSPlayer): uint32 {
 
 export function InsertPreparedValue(player: TSPlayer, value: uint32) {
     PreparedInsert.Create()
-        .SetUInt64(0,player.GetGUID())
+        .SetGUIDNumber(0,player.GetGUID())
         .SetUInt32(1,value)
         .SetUInt32(2,value) // needed since we insert it in two places
         .Send()
@@ -56,7 +56,7 @@ export function InsertPreparedValue(player: TSPlayer, value: uint32) {
 
 export function DeletePreparedValue(player: TSPlayer) {
     PreparedDelete.Create()
-        .SetUInt64(0,player.GetGUID())
+        .SetGUIDNumber(0,player.GetGUID())
         .Send()
 }
 

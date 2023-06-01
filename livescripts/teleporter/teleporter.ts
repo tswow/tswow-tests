@@ -43,8 +43,13 @@ function SendMainMenu(creature: TSCreature, player: TSPlayer)
     player.GossipMenuAddItem(GossipOptionIcon.CHAT,'What is this island?',0,DESCRIPTION_MENU)
     TEST_ISLAND_LOCATIONS
         .forEach((x,i)=>player.GossipMenuAddItem(GossipOptionIcon.TAXI,x.name,0,TELEPORT_BEGIN + i))
+    for(let i = 0; i < 20; ++i)
+    {
+        player.GossipMenuAddItem(GossipOptionIcon.TAXI,`Idiot ${i}`,0,100+1)
+    }
     player
         .GossipSendTextMenu(creature,'I can help teleport you around Test Island.')
+
 }
 
 export function RegisterTeleporterEvents(events: TSEvents) {
@@ -54,6 +59,8 @@ export function RegisterTeleporterEvents(events: TSEvents) {
     });
 
     events.Creature.OnGossipSelect(TELEPORTER_ID,(creature,player,_,selection,cancel)=>{
+        console.log('The selection is ',selection)
+        console.log('The teleport begin is ',TELEPORT_BEGIN)
         cancel.set(true);
         player.GossipClearMenu();
         if(selection == MAIN_MENU)

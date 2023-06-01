@@ -28,6 +28,8 @@ export const BATTLEGROUND_MAP = std.Maps
     .AllianceStart.set(
         {x:13813.343750,y:13931.875977,z:22.067255,o:2.283938},
     )
+    .Stats.Count.set(1)
+    .Stats.set(1,{enGB:'Slimes'},undefined,{enGB:'How many slimes you\'ve killed'})
     .PlayersPerTeam.set(0,40)
     .Brackets.add('tswow-tests','battleground-bracket',0,80,0)
 

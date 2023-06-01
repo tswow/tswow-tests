@@ -38,9 +38,5 @@ export function Main(events: TSEvents) {
     RegisterSyntaxTestEvents(events);
     RegisterTaxiCheat(events);
 
-    events.Player.OnCommand((player,command,found)=>{
-        if(command.get() == 'crash') {
-            player.GetSelection().SetName('crashed')
-        }
-    })
+    events.Vehicle.OnAddPassenger
 }

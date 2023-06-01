@@ -8,7 +8,7 @@ import { ORMGossipSelection } from "./orm-gossip-selection";
 
 @CharactersTable
 export class ORMArrayDemo extends DBArrayEntry {
-    constructor(player: uint64) {
+    constructor(player: TSGUID) {
         super();
         this.player = player
         this.randomValue = Math.random();
@@ -25,7 +25,7 @@ export class ORMArrayDemo extends DBArrayEntry {
     // cannot be manipulated by the user as it is managed entirely
     // by MySQL.
     @DBPrimaryKey
-    player: uint64 = 0
+    player: TSGUID = CreateGUID(0,0)
 
     @DBField
     randomValue: float = 0

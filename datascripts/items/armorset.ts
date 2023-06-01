@@ -32,12 +32,6 @@ const TEST_SET_SPELL = std.Spells
    .Description.enGB.set('Get a funny message that you\'re wearing the set')
    .AuraDescription.enGB.set('You\'re wearing the full test set!')
    .Attributes.IS_PASSIVE.set(true)
-   .InlineScripts.OnCast(()=>{
-
-   })
-   .InlineScripts.OnApply((effect)=>{
-
-   })
    .Effects.addMod(eff=>{
        eff.Type.APPLY_AURA.set()
           .Aura.DUMMY.set()

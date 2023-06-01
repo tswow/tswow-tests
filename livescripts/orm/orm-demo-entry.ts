@@ -11,7 +11,7 @@ import { ORMGossipSelection } from "./orm-gossip-selection";
 // (This is almost always what we want)
 @CharactersTable
 export class ORMDemoEntry extends DBEntry {
-    constructor(player: uint64) {
+    constructor(player: TSGUID) {
         super();
         this.player = player
     }
@@ -20,12 +20,12 @@ export class ORMDemoEntry extends DBEntry {
     // this row in the table. Since we are mapping players,
     // we use the player GUID here.
     @DBPrimaryKey
-    player: uint64 = 0
+    player: TSGUID = CreateGUID(0,0)
 
     // The @Field decorator is used to specify other class
     // variables we want to store in the database
     @DBField
-    clickCounter: uint32 = 0
+    click: uint32 = 0
 
     // If we don't specify the @Field decorator,
     // the value is not saved to the database.
@@ -51,16 +51,16 @@ export class ORMDemoEntry extends DBEntry {
         ORMDemoEntry.get(player).Save();
     }
 
-    static Delete(playerGuid: uint64) {
+    static Delete(playerGuid: TSGUID) {
         LoadDBEntry(new ORMDemoEntry(playerGuid)).Delete()
     }
 
     static Reset(player: TSPlayer){
-        ORMDemoEntry.get(player).clickCounter = 0
+        ORMDemoEntry.get(player).click = 0
     }
 
     static Increase(player: TSPlayer) {
-        ORMDemoEntry.get(player).clickCounter++;
+        ORMDemoEntry.get(player).click++;
     }
 }
 
@@ -70,7 +70,7 @@ export function RegisterEntryEvents(events: TSEvents) {
     });
 
     events.Player.OnDelete((guid)=>{
-        ORMDemoEntry.Delete(guid)
+        ORMDemoEntry.Delete(CreateGUID(guid,0))
     });
 }
 
@@ -81,7 +81,7 @@ export function SendEntryMenu(player: TSPlayer, creature: TSCreature) {
     let entry = ORMDemoEntry.get(player);
 
     // To modify the save data, we simply write to it like a normal variable.
-    entry.clickCounter++;
+    entry.click++;
 
     // == The below is just printing out the menu, unrelated to ORM system ==
     player.GossipClearMenu()
@@ -99,6 +99,6 @@ export function SendEntryMenu(player: TSPlayer, creature: TSCreature) {
         + ` \n\nTry clicking this menu multiple times, and then log out and`
         + ` click it again. You should see that the save data is stored persistent`
         + ` even between sessions.`
-        + ` \n\nYou have clicked this menu <${entry.clickCounter}> times.`
+        + ` \n\nYou have clicked this menu <${entry.click}> times.`
     )
 }

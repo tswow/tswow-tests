@@ -8,7 +8,7 @@ export function GetValuePlainSQL(player: TSPlayer): uint32 {
     const res = QueryCharacters(`
         SELECT (${PLAIN_VALUE})
             FROM ${PLAIN_TABLE}
-            WHERE ${PLAIN_PLAYER} = ${player.GetGUID()};
+            WHERE ${PLAIN_PLAYER} = ${player.GetGUID().GetLow()};
     `)
     if(!res.GetRow()) {
         return 0;
@@ -19,7 +19,7 @@ export function GetValuePlainSQL(player: TSPlayer): uint32 {
 export function InsertValuePlainSQL(player: TSPlayer, value: uint32) {
     QueryCharacters(`
         INSERT INTO ${PLAIN_TABLE}
-            VALUES (${player.GetGUID()},${value})
+            VALUES (${player.GetGUID().GetLow()},${value})
             ON DUPLICATE KEY UPDATE ${PLAIN_VALUE} = ${value};
     `)
 }
@@ -38,7 +38,7 @@ export function SetupSQLPlainTable() {
 export function DeleteSQLPlain(player: TSPlayer) {
     QueryCharacters(`
         DELETE FROM ${PLAIN_TABLE}
-            WHERE ${PLAIN_PLAYER} = ${player.GetGUID()};
+            WHERE ${PLAIN_PLAYER} = ${player.GetGUID().GetLow()};
     `)
 }
 

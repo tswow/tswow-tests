@@ -61,14 +61,12 @@ export function RegisterBattlegroundEvents(events: TSEvents) {
         })
     })
 
-    /*
     events.Battleground.OnSendScore(MAP,(bg,score,packet,cancel)=>{
         cancel.set(true);
         score.ApplyBaseToPacket(bg,packet);
         packet.WriteUInt32(1);
         packet.WriteUInt32(score.GetCustomAttr('slimes'))
     })
-    */
 
     events.Creature.OnDeath(SLIME_CREATURE,(creature,killer)=>{
         // Check for wrong maps or non-battlegrounds
@@ -89,13 +87,11 @@ export function RegisterBattlegroundEvents(events: TSEvents) {
             return;
         }
 
-        /*
         let score = map.GetScore(killer.GetGUIDLow())
         if(score)
         {
-            score.SetCustomAttr('slimes',score.GetCustomAttr('slimes') + 1)
+            score.ModCustomAttr('slimes',1)
         }
-        */
 
         if(team == TeamId.HORDE) {
             data.hordeScore++;

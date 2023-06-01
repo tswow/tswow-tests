@@ -59,3 +59,42 @@ std.EquipSkills.Cloth.enableAutolearnClass(TEST_CLASS.Mask)
 // These are not autolearned
 std.EquipSkills.Leather.enableClass(TEST_CLASS.Mask)
 std.EquipSkills.Guns.enableClass(TEST_CLASS.Mask)
+
+export const TEST_CLASS_2 = std.Classes
+    .create('tswow-tests','customclass2','WARRIOR')
+    .Name.enGB.set('Test Class 2')
+    .Tags.addUnique('tswow-tests','customclass2')
+    .Races.add([
+          'BLOODELF','DRAENEI','DWARF','GNOME','HUMAN'
+        , 'NIGHTELF','ORC','TAUREN','TROLL','UNDEAD'
+    ])
+
+    // Race/Class Info
+    .Races.forEach(raceClass=>{raceClass
+      .SpawnPosition.set(
+        TEST_ISLAND.ID
+      , {map:TEST_MAP.ID,x:14875.500000,y:14557.799805,z:74.685699,o:1.538050})
+      raceClass.Outfits.both(gear=>{gear
+        .Items.clearAll()
+        .Items.add(6129,undefined,'ROBE')
+      })
+    })
+
+    // No cinematic sequence
+    .CinematicSequence.set(-1)
+
+    // LFG Dungeon Roles
+    .Roles.clear()
+    .Roles.Damage.set(true)
+    .Roles.Healer.set(true)
+
+    // Stats
+    .Stats.MeleeCrit.set((old,index)=>old*1.1)
+    .Stats.MeleePowerType.MAGE.set()
+
+    // UI Settings
+    .UI.setIcon(std.Image.readFromModule(
+        'tswow-tests'
+      , 'assets/ClassIcons/test-class-icon.blp'
+    ))
+
